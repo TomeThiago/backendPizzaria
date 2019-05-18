@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const app = express();
-
+//permite a interação com arquivos JSON
+app.use(express.json());
 //permite a conexão de outros dominios
 app.use(cors());
 
@@ -26,11 +27,6 @@ app.use((req, res, next) => {
     req.io = io;
     return next();
 });
-
-//permite a interação com arquivos JSON
-app.use(express.json());
-//Permite envio de arquivos
-app.use(express.urlencoded({ extend: true}));
 
 app.use(require('./routes'));
 

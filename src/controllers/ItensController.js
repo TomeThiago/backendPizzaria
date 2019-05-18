@@ -21,6 +21,12 @@ class ItensController {
 
         return res.json(item);
     }
+
+    async show(req, res) {
+        const pedido = await Pedido.findById(req.params.id).populate('itens');
+
+        return res.json(pedido);
+    }
 }
 
 module.exports = new ItensController();
