@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 const Usuario = new mongoose.Schema({
     user: { 
@@ -7,10 +8,13 @@ const Usuario = new mongoose.Schema({
     },
     password: { 
         type: String,
-        required: true
+        required: true,
+        select: false
     },
 }, {
     timestamps: true
 });
+
+Usuario.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Usuario', Usuario);

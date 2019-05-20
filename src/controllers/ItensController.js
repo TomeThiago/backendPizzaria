@@ -7,10 +7,11 @@ class ItensController {
         const pedido = await Pedido.findById(req.params.id);
         
         const item = await Itens.create({
-            item: req.body.item,
             descricao: req.body.descricao,
+            tamanho: req.body.tamanho,
             quantidade: req.body.quantidade,
-            preco: req.body.preco
+            preco: req.body.preco,
+            total: req.body.total
         });
 
         pedido.itens.push(item);
@@ -23,9 +24,17 @@ class ItensController {
     }
 
     async show(req, res) {
-        const pedido = await Pedido.findById(req.params.id).populate('itens');
+        const itens = await Pedido.findById(req.params.id).populate('itens');
 
-        return res.json(pedido);
+        return res.json(itens);
+    }
+
+    async update(req, res) {
+       
+    }
+
+    async destroy(req, res) {
+        
     }
 }
 

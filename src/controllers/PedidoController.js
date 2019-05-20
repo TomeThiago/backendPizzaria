@@ -6,7 +6,8 @@ class PedidoController {
         const pedido = await Pedido.create({ 
             numero: req.body.numero, 
             mesa: req.body.mesa, 
-            cliente: req.body.cliente 
+            cliente: req.body.cliente,
+            total: req.body.total
         });
        
         return res.json(pedido);
