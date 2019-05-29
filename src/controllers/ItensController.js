@@ -18,8 +18,6 @@ class ItensController {
 
         await pedido.save();
 
-        req.io.sockets.in(pedido._id).emit('itens', item);
-
         return res.json(item);
     }
 
@@ -30,11 +28,37 @@ class ItensController {
     }
 
     async update(req, res) {
-       
+        const { descricao, tamanho, quantidade, preco, total } = req.body;
+        //Busca o pedido selecionado
+        const pedido = await Pedido.findByIdAndUpdate(req.params.id, {
+            descricao, 
+            tamanho, 
+            quantidade, 
+            preco, 
+            total
+        }, { new: true });
+        
+        pedido.item = [];
+        await item.remove({ pedido: pedido._id });
+
+        const item = await Itens.create({
+            descricao: req.body.descricao,
+            tamanho: req.body.tamanho,
+            quantidade: req.body.quantidade,
+            preco: req.body.preco,
+            total: req.body.total
+        });
+
+        pedido.itens.push(item);
+
+        await pedido.save();
+
+        return res.json(item);
     }
 
     async destroy(req, res) {
-        
+        //Busca o pedido selecionado
+        const pedido = await Pedido.findById(req.params.id);
     }
 }
 

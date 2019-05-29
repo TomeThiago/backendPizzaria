@@ -8,24 +8,34 @@ const Itens = new mongoose.Schema(
             required: true
         },
 
+        pedido: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Pedido',
+            required: true,
+        },
+
         tamanho: {
             type: String,
-            required: true
+            required: true,
+            default: 'Grande'
         },
 
         quantidade: {
             type: Number,
-            required: true
+            required: true,
+            default: 1
         },
 
         preco: {
             type: Number,
-            required: true
+            required: true,
+            default: 0.00,
         },
 
         total: {
             type: Number,
-            required: true
+            required: true,
+            default: 0.00,
         },
 
     }, 

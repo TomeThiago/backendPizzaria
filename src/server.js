@@ -23,6 +23,8 @@ mongoose.connect('mongodb+srv://ProjPizza:ProjPizza2019@cluster0-jtais.mongodb.n
     useNewUrlParser: true
 });
 
+mongoose.Promise = global.Promise;
+
 app.use((req, res, next) => {
     req.io = io;
     return next();

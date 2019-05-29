@@ -6,9 +6,19 @@ const Pedido = new mongoose.Schema({
         type: Number,
         required: true,
     },
+
     mesa: {type: Number},
-    total: {type: Number},
-    cliente: {type: String},
+
+    total: {
+        type: Number,
+        default: 0.00,
+    },
+
+    cliente: {
+        type: String,
+        default: 'Não identificado',
+    },
+    
     itens: [{type: mongoose.Schema.Types.ObjectId, ref: 'Itens'}]
 }, 
 {
