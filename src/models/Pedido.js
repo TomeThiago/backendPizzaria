@@ -4,7 +4,6 @@ const mongoosePaginate = require('mongoose-paginate');
 const Pedido = new mongoose.Schema({
     numero: {
         type: Number,
-        required: true,
     },
 
     mesa: {type: Number},
