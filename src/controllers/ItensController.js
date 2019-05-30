@@ -59,6 +59,12 @@ class ItensController {
     async destroy(req, res) {
         //Busca o pedido selecionado
         const pedido = await Pedido.findById(req.params.id);
+
+        pedido.itens.push(item);
+
+        await pedido.save();
+
+        return res.json(item);
     }
 }
 

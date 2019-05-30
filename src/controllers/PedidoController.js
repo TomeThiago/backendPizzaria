@@ -4,7 +4,6 @@ class PedidoController {
     
     async store(req, res) {
         const pedido = await Pedido.create({ 
-            numero: req.body.numero, 
             mesa: req.body.mesa, 
             cliente: req.body.cliente,
             total: req.body.total

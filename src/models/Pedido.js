@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const mongoosePaginate = require('mongoose-paginate');
 
 const Pedido = new mongoose.Schema({
@@ -24,6 +25,7 @@ const Pedido = new mongoose.Schema({
     timestamps: true
 });
 
+Pedido.plugin(AutoIncrement, {inc_field: 'numero'});
 Pedido.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Pedido', Pedido);

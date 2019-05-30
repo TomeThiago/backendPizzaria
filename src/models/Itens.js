@@ -8,12 +8,6 @@ const Itens = new mongoose.Schema(
             required: true
         },
 
-        pedido: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Pedido',
-            required: true,
-        },
-
         tamanho: {
             type: String,
             required: true,
